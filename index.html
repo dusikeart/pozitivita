@@ -13,23 +13,26 @@
       background-color: #f0f0f0;
       font-family: 'Arial', sans-serif;
       margin: 0;
+      padding: 10px; /* Added padding for mobile screens */
     }
 
     .container {
       text-align: center;
+      max-width: 100%; /* Ensure container doesn't exceed screen width */
     }
 
     h1 {
-      font-size: 32px;
+      font-size: 24px; /* Adjusted for better mobile visibility */
       color: #333;
+      margin: 0;
     }
 
     button {
       background-color: #ff69b4;
       color: white;
       border: none;
-      padding: 15px 30px;
-      font-size: 18px;
+      padding: 12px 24px; /* Adjusted padding for mobile screens */
+      font-size: 16px; /* Adjusted font size for mobile screens */
       border-radius: 10px;
       cursor: pointer;
       transition: background-color 0.3s ease;
@@ -45,8 +48,9 @@
 
     /* Ensure the image has a fixed width and automatic height */
     .image {
-      width: 400px;  /* Fixed width */
-      height: auto;  /* Automatic height based on the image's aspect ratio */
+      width: 100%; /* Adjust to fit the container width */
+      max-width: 400px; /* Fixed maximum width */
+      height: auto; /* Automatic height based on the image's aspect ratio */
       border-radius: 15px;
       display: block;
       margin: 0 auto;
@@ -54,8 +58,24 @@
 
     .quote {
       margin-top: 15px;
-      font-size: 20px;
+      font-size: 18px; /* Adjusted font size for better mobile readability */
       color: #555;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 20px;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+
+      .quote {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
