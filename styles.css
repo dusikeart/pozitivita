@@ -51,7 +51,7 @@ h1 {
     align-items: center;
     border: 4px solid white;
     cursor: pointer; /* Indicate clickable */
-    padding: 20px; /* Added padding for better spacing */
+    padding: 80px; /* Added padding for better spacing */
 }
 
 /* Badge colors for different levels */
@@ -125,9 +125,3 @@ h1 {
     .badge {
         width: 80%;
     }
-
-    .placeholder {
-        font-size: 5rem; /* Adjust font size for smaller screens */
-        padding: 30px; /* More padding for mobile to avoid squashing */
-    }
-}
