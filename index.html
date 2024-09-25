@@ -1,132 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>✨Pozitívna stránka✨</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: #f0f0f0;
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 10px; /* Added padding for mobile screens */
-    }
-
-    .container {
-      text-align: center;
-      max-width: 100%; /* Ensure container doesn't exceed screen width */
-    }
-
-    h1 {
-      font-size: 24px; /* Adjusted for better mobile visibility */
-      color: #333;
-      margin: 0;
-    }
-
-    button {
-      background-color: #ff69b4;
-      color: white;
-      border: none;
-      padding: 12px 24px; /* Adjusted padding for mobile screens */
-      font-size: 16px; /* Adjusted font size for mobile screens */
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #ff1493;
-    }
-
-    .content {
-      margin-top: 20px;
-    }
-
-    /* Ensure the image has a fixed width and automatic height */
-    .image {
-      width: 100%; /* Adjust to fit the container width */
-      max-width: 400px; /* Fixed maximum width */
-      height: auto; /* Automatic height based on the image's aspect ratio */
-      border-radius: 15px;
-      display: block;
-      margin: 0 auto;
-    }
-
-    .quote {
-      margin-top: 15px;
-      font-size: 18px; /* Adjusted font size for better mobile readability */
-      color: #555;
-    }
-
-    /* Responsive styles */
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 20px;
-      }
-
-      button {
-        padding: 10px 20px;
-        font-size: 14px;
-      }
-
-      .quote {
-        font-size: 16px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patinove odznaky za vstávanie ☕🌄</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Patrikove tlačítko</h1>
-    <button id="randomButton">✨Chcem kľud✨</button>
-    <div id="content" class="content">
-      <!-- Random image and quote will appear here -->
+    <header>
+        <h1>Patinove odznaky za vstávanie ☕🌄</h1>
+    </header>
+    <div class="badges-container">
+        <div class="badge">
+            <div class="placeholder iron" onclick="openModal(this)">?</div>
+            <p class="quote iron">?</p>
+        </div>
+        <div class="badge">
+            <div class="placeholder bronze" onclick="openModal(this)">?</div>
+            <p class="quote bronze">?</p>
+        </div>
+        <div class="badge">
+            <div class="placeholder silver" onclick="openModal(this)">?</div>
+            <p class="quote silver">?</p>
+        </div>
+        <div class="badge">
+            <div class="placeholder gold" onclick="openModal(this)">?</div>
+            <p class="quote gold">?</p>
+        </div>
+        <div class="badge">
+            <div class="placeholder platinum" onclick="openModal(this)">?</div>
+            <p class="quote platinum">?</p>
+        </div>
     </div>
-  </div>
 
-  <script>
-    const quotes = [
-      '„Držať sa hnevu je ako piť jed a čakať, že ten druhý zomrie.“ – Buddha',
-      '„Za každú minútu, čo ste nahnevaní, prichádzate o šesťdesiat sekúnd šťastia.“ – Ralph Waldo Emerson',
-      '„Hnev je vietor, ktorý zhasína lampu mysle.“ – Robert G. Ingersoll',
-      '„Nikdy nechoď spať nahnevaný. Zostaň hore a bojuj.“ – Phyllis Diller',
-      '„Hnev, závisť a žiarlivosť nemenia srdcia iných – menia len to tvoje.“ – Shannon Alder',
-      '„Pokojná myseľ prináša vnútorný pokoj, zatiaľ čo hnev ničí váš život.“ – Dalajláma',
-      '„Skutočná sila spočíva v schopnosti odpustiť, nie v hneve.“ – Mahátma Gándhí',
-      '„Hnev ťa nerobí silným, ale trpezlivosť je pravou známkou sily.“ – Joyce Meyer',
-      '„V hneve nemôžeš zmeniť to, čo sa stalo, ale môžeš zmeniť to, čo príde.“ – Anonym',
-      '„Nauč sa ovládať svoj hnev, aby ťa tvoj hnev neovládal.“ – Anonym',
-      '„Hnev je krátkodobé šialenstvo.“ – Horatius',
-      '„Ak ťa niečo nahnevá, nechaj to ísť. Nič v živote nestojí za to, aby si kvôli tomu stratil pokoj.“ – Anonym',
-      '„Nikdy nezvíťazíš, ak necháš hnev zničiť tvoje rozhodnutia.“ – Nelson Mandela',
-      '„Hnev nás oberá o šťastie. Šťastie nájdeš len v láskavosti a odpustení.“ – Anonym',
-      '„Svoj hnev si môžeš vybrať. Zvoľ si cestu mieru.“ – Wayne Dyer',
-      '„Keď ťa ovláda hnev, strácaš seba.“ – Tony Robbins',
-      '„Hnev je iba prejav strachu. Neboj sa. Zostaň pokojný.“ – Oprah Winfrey',
-      '„Trpezlivosť je liekom na hnev. Kto ju zvládne, zvládne všetko.“ – Lao-c’'
-    ];
+    <!-- Modal for displaying images -->
+    <div id="modal" class="modal" onclick="closeModal()">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
 
-    // Function to fetch a random puppy image from The Dog API
-    async function getRandomPuppyImage() {
-      try {
-        const response = await fetch('https://api.thedogapi.com/v1/images/search');
-        const data = await response.json();
-        return data[0].url;
-      } catch (error) {
-        console.error('Error fetching the puppy image:', error);
-        return 'https://via.placeholder.com/400?text=Error+loading+image';
-      }
-    }
+    <script>
+        function openModal(element) {
+            const modal = document.getElementById("modal");
+            const modalImage = document.getElementById("modalImage");
+            if (element.tagName === 'IMG') {
+                modalImage.src = element.src; // For images
+            } else {
+                modalImage.src = ''; // Set to an empty image or default image if needed
+            }
+            modal.style.display = "block";
+        }
 
-    document.getElementById('randomButton').addEventListener('click', async function() {
-      const randomImage = await getRandomPuppyImage(); // Get random puppy image from API
-      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]; // Random quote
-      document.getElementById('content').innerHTML = `<img src="${randomImage}" alt="Cute animal" class="image"><p class="quote">${randomQuote}</p>`;
-    });
-  </script>
+        function closeModal() {
+            const modal = document.getElementById("modal");
+            modal.style.display = "none";
+        }
+    </script>
 </body>
 </html>
