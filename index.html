@@ -1,158 +1,116 @@
-﻿<!DOCTYPE html>
-<html lang="sk">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paťkov život je divný..</title>
+    <title>Kubko</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f0f8ff; padding: 20px; }
-        .story { margin: 20px 0; }
-        .option { display: block; margin: 10px 0; padding: 10px; background-color: #4CAF50; color: white; text-align: center; cursor: pointer; border-radius: 5px; text-decoration: none; }
-        .option:hover { background-color: #45a049; }
-        #restart { display: block; margin-top: 20px; padding: 10px; background-color: #f44336; color: white; text-align: center; cursor: pointer; border-radius: 5px; text-decoration: none; }
-        #restart:hover { background-color: #e53935; }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 20px;
+        }
+
+        .header {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #666;
+        }
     </style>
 </head>
 <body>
+    <div id="content">
+        <div class="header">Dôvody, prečo si tak úžasný Kubko a prečo všetko zvládneš <3</div>
+        <img id="image" src="" alt="Motivational Image">
+        <p class="quote" id="quote"></p>
+        <button onclick="refreshContent()">Nový obrázok a citát</button>
+    </div>
 
-<h1>Paťkov život je divný..</h1>
-<div id="story-container" class="story">
-    <p>Je ránko a zobudil ta budík do roboty čo urobíš?</p>
-    <a href="#" class="option" onclick="optionA()">a) Vstať a nachystať sa</a>
-    <a href="#" class="option" onclick="optionB()">b) Ešte chvíľku si zdriemnuť</a>
-    <a href="#" class="option" onclick="optionC()">c) Jebať na to</a>
-</div>
+    <script>
+        const images = [
+            'https://placedog.net/640/480?r',
+            'https://placedog.net/640/480?r',      
+        ];
 
-<div id="restart-container">
-    <a href="#" id="restart" onclick="restartGame()">Reštart</a>
-</div>
+        const quotes = [
+            'Tvoj funny brainrot :DD.',
+            'Tvoje nádherné oči.',
+            'To, že jednoducho si.',
+            'Tvoj sexy knírek :D.',
+            'To, ako pri tebe zabúdam na všetko zlé.',
+            'To, ako krásne vieš prehovoriť k mojej duši.',
+            'Tvoja umelecká povaha.',
+            'To teplo domova, ktoré z teba cítim.',
+            'Prežil si 100% svojich najhorších dní.',
+            'Aj toto prejde.',
+            'Si silnejší, ako si myslíš.',
+            'Niekedy aj len existovať stačí.',
+            'Prišiel si tak ďaleko, pokračuj.',
+            'Dýchaj. Všetko bude v poriadku.',
+            'Nie si sám.',
+            'I AM ON THAT GOOD KUSH AND ALCOHOL',
+            'Jeden deň naraz, jeden nádych naraz.',
+            'Ver si, dokážeš viac, než si myslíš.',
+            'Robíš, čo môžeš, a to stačí.',
+            'Ešte musíme poriadne recreatnuť Cait and Vi scene ;).'
+        ];
 
-<script>
-    function optionA() {
-        document.getElementById('story-container').innerHTML = `
-            <p>Vstal si, dal si sa do kopy, stihol si sa nachystať a ideš do Lidla. Lenže po ceste si všimneš jednu cestu, ktorou si nikdy do roboty pred tým nešiel. Ktorú si vyberieš?</p>
-            <a href="#" class="option" onclick="optionAA()">a) Tú ktorou chodím vždy</a>
-            <a href="#" class="option" onclick="optionAB()">b) Preskúmam túto cestu</a>
-        `;
-    }
+        function getRandomItem(array) {
+            return array[Math.floor(Math.random() * array.length)];
+        }
 
-    function optionAA() {
-        document.getElementById('story-container').innerHTML = `
-            <p>Konec 1/10: Išiel si do práce tak ako vždy, nič nové, len si tam pičoval ale zvládol si to a už si domka! 🤗</p>
-        `;
-    }
+        function refreshContent() {
+            const randomImage = getRandomItem(images);
+            document.getElementById('image').src = `${randomImage}&rand=${Math.random()}`;
+            document.getElementById('quote').textContent = getRandomItem(quotes);
+        }
 
-    function optionAB() {
-        document.getElementById('story-container').innerHTML = `
-            <p>Ako tak ideš po tejto ceste, z ničoho nič sa začne čosi hýbať v kríkoch. Pozrieš sa čo to je?</p>
-            <a href="#" class="option" onclick="optionABA()">a) Preskúmať krík</a>
-            <a href="#" class="option" onclick="optionABB()">b) Ignorovať a ísť ďalej</a>
-        `;
-    }
-
-    function optionABA() {
-        document.getElementById('story-container').innerHTML = `
-            <p>Konec 2/10: Po preskúmaní na teba z kríku vyskočí malinký drobec racoon 🦝🥹🥹. Ani neváhaš a zoberieš si ho. Tento racoon prináša šťastie, a vďaka nemu si vyhral 1,000,000 €! Teraz si si kúpil chatku niekde mimo civilizácie, mimo ľudí a žiješ si tam šťastne aj s tvojim racoonom aj s Montym 🥹</p>
-        `;
-    }
-
-    function optionABB() {
-        document.getElementById('story-container').innerHTML = `
-            <p>Konec 3/10: Zvuk v kríkoch si ignoroval a prišiel si do Lidla na čas. Nič extra sa neudialo a celú zmenu rozmýšľaš nad tým, čo to mohlo byť v tom kríku. 🤔</p>
-        `;
-    }
-
-    function optionB() {
-        document.getElementById('story-container').innerHTML = `
-            <p>Rozhodol si sa ešte chvíľku si zdriemnuť a zrazu ťa budí správa od Duškyho! 🤗</p>
-            <a href="#" class="option" onclick="optionBA()">a) Pozrieť si správu</a>
-            <a href="#" class="option" onclick="optionBB()">b) Ignorovať správu a spinkať ďalej</a>
-        `;
-    }
-
-    function optionBA() {
-        document.getElementById('story-container').innerHTML = `
-            <p>V správe od Duškyho si sa dočítal, že niekto založil petíciu na legalizáciu kastrácie jebnutích mužov!! 😍😍</p>
-            <a href="#" class="option" onclick="optionBAA()">a) Podpísať petíciu</a>
-            <a href="#" class="option" onclick="optionBAB()">b) Nepodpísať</a>
-        `;
-    }
-
-    function optionBAA() {
-        document.getElementById('story-container').innerHTML = `
-            <p>Konec 4/10: Neuveriteľné!! Zrovna jeden jediný podpis chýbal k tomu aby sa táto petícia stala platným zákonom a zrovna ty si bol ten jeden podpis, ktorý chýbal!! 😼 Zrazu je svet krajším miestom a Slovensko má o čosi jasnejšiu budúcnosť aj vďaka TEBE!! Vďaka bohu za legálnu kastráciu mužov!😌.</p>
-        `;
-    }
-
-    function optionBAB() {
-        document.getElementById('story-container').innerHTML = `
-            <p>Rozhodol si sa nepodpísať petíciu a zapísal si sa s Duškym 😅, len bohužial Dušky má hodinu tak ti napísal, že sa ti ozve, keď sa mu bude dať.. 😌, kým sa spamätáš, je už 13:00!! Kompletne si zabudol na to ísť do práce!! V ten moment počuješ klopanie na dvere.</p>
-            <a href="#" class="option" onclick="optionBBA()">a) Otvoriť dvere</a>
-            <a href="#" class="option" onclick="optionBBB()">b) Hrať sa, že nie si doma</a>
-        `;
-    }
-
-    function optionBBA() {
-        document.getElementById('story-container').innerHTML = `
-            <p>Konec 5/10: Otvoríš dvere a za nimi stojí tvoja vedúca z Lídla! 😱 Netvári sa dva krát nadšene, pohádate sa a skončí to tým že jej dáš svoj čip do práce. Ako odišla rozmýšľaš, čo teraz? Kde budeš pracovať? A v ten moment ti príde notifikácia od niekoho random a chce od teba tetovanie!! Keďže máš konečne na to čas, ešte v ten deň príde a ukáže sa, že je to herec čo hral Erika Menendeza! Sám Cooper Koch ti stojí vo dverách 😍🥵 a chce potetovať celú hruď!!</p>
-        `;
-    }
-
-    function optionBBB() {
-        document.getElementById('story-container').innerHTML = `
-            <p>Konec 6/10: Tváriš sa, že nie si doma, časom to klopanie prestane, na ďalší deň prídeš do práce a dostaneš vypičované od vedúcej, že kde si bol. Ty neriešiš a máš na kokote.. 😌 lebo vieš, že tak či tak ťa nevyhodí, lebo nikto iný by im tam nemohol robiť handru...</p>
-        `;
-    }
-
-function optionBB() {
-        document.getElementById('story-container').innerHTML = `
-            <p>Konec 7/10: Rozhodol si sa nevšímať si toho a spinkať ďalej 😴, neskôr sa zobudíš a uvedomíš si, že si prespal celý deň, cítiš sa z toho trošku zle, ale na druhú stranu si nikdy v živote taký dobrý spánok nemal a máš kopec energie na ďalší deň!! 💪</p>
-        `;
-    }
-
-    function optionC() {
-        document.getElementById('story-container').innerHTML = `
-            <p>Rozhodol si sa jebať na to a spinkať ďalej lebo... why not? 😅.. po niekoľkých hodinách sa budíš na to ako ta Monty oblizuje lebo chce isť von prcek malinky 🥺</p>
-            <a href="#" class="option" onclick="optionCA()">a) Zhodiť ho z postele a spinkať ďalej</a>
-            <a href="#" class="option" onclick="optionCB()">b) Zdvihnúť sa z postele a ísť sa prejsť s Montym</a>
-        `;
-    }
-
-    function optionCA() {
-        document.getElementById('story-container').innerHTML = `
-            <p>Konec 8/10: Smutný drobeček Monty si išiel lažkať na svoj pelech lebo vie, že sa nikam nejde.. 🥺, prespal si celý deň a na ďalšie ráno sa rozospatý budíš a ako vstaneš z postele si všimneš, že Monty sa ti vycikal na zem lebo si s ním nikde nebol! Najbližšie ho musíš zobrať aby sa to neopakovalo! 😤</p>
-        `;
-    }
-
-    function optionCB() {
-        document.getElementById('story-container').innerHTML = `
-            <p>Obliekol si sa a po tme v zime ideš na prechádzku s Montym. No po ceste ako vždy s ním chodievaš tak tam stoja furries!!! Ew... 🤢</p>
-            <a href="#" class="option" onclick="optionCBA()">a) Obísť okolo nich a tváriť sa, že nič</a>
-            <a href="#" class="option" onclick="optionCBB()">b) Skúsiť ísť inou cestou</a>
-        `;
-    }
-
-    function optionCBA() {
-        document.getElementById('story-container').innerHTML = `
-            <p>Koniec 9/10: Rozhodol si sa ísť popri nich a tváriť sa že nič.. no bohužial ako si išiel okolo nich začali po tebe štekať!! 😱 Monty sa zo strachu pocikal a ušiel a ty si ostal traumatizovaný do konca života... 😢</p>
-        `;
-    }
-
-    function optionCBB() {
-        document.getElementById('story-container').innerHTML = `
-            <p>Koniec 10/10: Našiel si bočnú cestu, ktorou si nikdy nešiel lenže zrovna tam majú stretnutie Jakubovia!!! 😱😱😱 V strachu si zamrzol ale podarilo ti sa pred nimi ujsť domov.. ale do konca života si ostal poznačený a od teraz nikdy nevychádzaš z bytu von bez tazeru... ⚡</p>
-        `;
-    }
-
-    function restartGame() {
-        document.getElementById('story-container').innerHTML = `
-            <p>Je ránko a zobudil ta budík do roboty čo urobíš?</p>
-            <a href="#" class="option" onclick="optionA()">a) Vstať a nachystať sa</a>
-            <a href="#" class="option" onclick="optionB()">b) Ešte chvílku si zdriemnuť</a>
-            <a href="#" class="option" onclick="optionC()">c) Jebať na to</a>
-        `;
-    }
-</script>
-
+        // Initialize content on page load
+        refreshContent();
+    </script>
 </body>
 </html>
